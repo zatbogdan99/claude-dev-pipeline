@@ -1,0 +1,12 @@
+# Config si fisiere temporare generate de plugin la RUNTIME in proiectele-tinta
+# (nu apartin repo-ului pluginului).
+.dev-pipeline/
+
+# Node
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

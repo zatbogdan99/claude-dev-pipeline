@@ -1,0 +1,14 @@
+{
+  "name": "bogdan-plugins",
+  "owner": {
+    "name": "Bogdan"
+  },
+  "plugins": [
+    {
+      "name": "dev-pipeline",
+      "source": "./plugins/dev-pipeline",
+      "description": "Pipeline multi-subagent pentru taskuri din backlog, cu fiecare pas de rationament rulat ca subagent NATIV izolat (context propriu). Duce un task cap-coada pana la Pull Request.",
+      "category": "development"
+    }
+  ]
+}
