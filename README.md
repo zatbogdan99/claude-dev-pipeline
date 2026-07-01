@@ -13,14 +13,7 @@ Nu exista infrastructura externa (fara Flowise, fara runner). Orchestrarea o fac
 
 ## Instalare
 
-Din folderul local (in dezvoltare), dintr-o sesiune Claude Code:
-
-```text
-/plugin marketplace add C:\Users\Bogd\Desktop\claude ai workflow\claude-dev-pipeline
-/plugin install dev-pipeline@bogdan-plugins
-```
-
-Sau din GitHub, dupa push:
+Dintr-o sesiune Claude Code:
 
 ```text
 /plugin marketplace add zatbogdan99/claude-dev-pipeline
@@ -65,6 +58,20 @@ claude-dev-pipeline/
 | read-only vs write | flag runtime `--sandbox` | **declarativ**: `tools:` in `agents/<rol>.md` |
 | Pasare context | fisiere temp (obligatoriu pe Windows) | prompt Task + fisiere `tmp/` (optional, pt. context mic) |
 | Interzicere commit prematur | doar instructiune | instructiune **+ hook** care blocheaza hard |
+
+## Model si efort per pas
+
+Fiecare subagent are un model FIXAT (`model:` in `agents/<rol>.md`) si ruleaza cu efort de gandire maxim (`ultrathink`):
+
+| Pas | Model | Efort |
+| --- | --- | --- |
+| planner | `opus` (Opus 4.8) | ultrathink |
+| implementer | `sonnet` (Sonnet 5) | ultrathink (max) |
+| reviewer | `opus` (Opus 4.8) | ultrathink (max) |
+| fixer | `sonnet` (Sonnet 5) | ultrathink (max) |
+| verifier | `opus` (Opus 4.8) | ultrathink (max) |
+
+Opus pe pasii read-only de rationament (plan + „a doua opinie" la review/verify), Sonnet pe executie (implement/fix). Schimbi editand `model:` in fisierul subagentului (`opus` / `sonnet` / `haiku` / `inherit`); aliasurile urmaresc automat ultima versiune (acum `opus`=4.8, `sonnet`=5). Efortul in Claude Code se da prin cuvinte-cheie de gandire in prompt (`ultrathink` = maxim), NU printr-un camp separat ca `model_reasoning_effort` la Codex — orchestratorul paseaza `ultrathink` la pornirea fiecarui subagent, si e notat si in definitia fiecaruia.
 
 ## Folosire
 

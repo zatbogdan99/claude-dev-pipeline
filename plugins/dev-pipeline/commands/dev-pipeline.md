@@ -36,7 +36,7 @@ Intrebari de initializare:
 6. Care e **branch-ul principal** (`main` / `master` / altul)? Daca nu stie, noteaza „auto" — il detectezi tu la rulare.
 7. **Comenzile de test** per repo (sau „fara teste").
 8. (Optional) Conventia de denumire a branch-urilor (implicit: `ticket/<id>-<slug>`).
-9. (Optional) Model/efort pentru subagenti (implicit: modelul sesiunii — vezi „Cum pornesti un subagent").
+9. (Optional) Model/efort pentru subagenti (implicit: Opus pe planner/reviewer/verifier, Sonnet pe implementer/fixer, efort maxim `ultrathink` — vezi „Cum pornesti un subagent").
 
 Scrie `.dev-pipeline/project.md` clar si structurat (sectiuni: Proiect, Repo-uri, Backlog, Branch principal, Comenzi de test, Conventii). Poate fi editat manual oricand si comis in repo ca sa fie partajat de echipa.
 
@@ -65,7 +65,7 @@ Pentru fiecare subagent, procedeaza identic:
    - plan → **`planner`** (read-only) · implement → **`implementer`** (scrie) · review → **`reviewer`** (read-only, emite JSON) · fix → **`fixer`** (scrie) · verify → **`verifier`** (read-only, emite JSON).
    - Promptul dat lui Task e SCURT: (a) ce fisiere din `tmp/` sa citeasca, (b) ce sa produca si in ce format. Rolul si limitele sunt deja in definitia subagentului.
    - **Granita read-only vs write e impusa de subagent, nu de tine:** planner/reviewer/verifier NU au Write/Edit/Bash, deci fizic nu pot modifica nimic; doar implementer/fixer scriu.
-   - Modelul: implicit cel al sesiunii (subagentii au `model: inherit`). Daca `project.md` fixeaza alt model/efort, spune-l in prompt sau ajusteaza definitia.
+   - **Model si efort:** fiecare subagent are un model FIXAT in definitia lui (planner/reviewer/verifier pe Opus, implementer/fixer pe Sonnet) si ruleaza cu efort de gandire maxim. **Include cuvantul `ultrathink` in promptul Task** cand pornesti orice subagent, ca sa activezi bugetul de gandire maxim. `project.md` poate suprascrie per-proiect.
 3. **Capteaza rezultatul** (rezultatul Task = mesajul final al subagentului):
    - **planner** → iti da planul; tu il salvezi in `tmp/plan.md`.
    - **implementer / fix** → au scris codul direct in repo; rezultatul e un rezumat scurt al fisierelor atinse.
