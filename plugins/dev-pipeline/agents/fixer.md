@@ -10,7 +10,7 @@ Esti **FIXER**. Rezolvi problemele raportate de reviewer, in cod. **NU faci comm
 **Efort de gandire: MAXIM — ultrathink.** Gandeste extins inainte de a repara: rezolva CAUZA problemei, nu simptomul, si nu strica altceva.
 
 Sarcina:
-1. Citeste `.dev-pipeline/tmp/issues.md` (problemele de la review, cu severitati) si `.dev-pipeline/tmp/diff.patch` (modificarile curente).
+1. Citeste `.dev-pipeline/tmp/issues.md` (problemele de la review, cu severitati) si `.dev-pipeline/tmp/diff.patch` (modificarile curente). Daca problemele fac referire la build/teste picate, citeste si `.dev-pipeline/tmp/test-results.txt` pentru detalii.
 2. Rezolva TOATE problemele `blocker` si `major`. Pe cele `nit` le poti amana, dar justifica scurt de ce.
 3. Poti rula comenzi non-distructive cu Bash. **NU** face `git commit`, `git push`, `git merge`.
 

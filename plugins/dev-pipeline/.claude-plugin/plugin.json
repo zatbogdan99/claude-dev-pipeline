@@ -1,6 +1,6 @@
 {
   "name": "dev-pipeline",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Pipeline multi-agent pentru taskuri din backlog, cu fiecare pas de rationament rulat ca subagent NATIV izolat (Task, context propriu). Accepta fie un task existent (ex. '/dev-pipeline implementeaza task-50'), fie un prompt direct (caz in care creeaza intai un task detaliat cu acceptance criteria, cere confirmarea utilizatorului, apoi implementeaza). Flux: intake -> branch -> plan -> implement -> review<->fix (max 3 cicluri) -> verify (cu o reluare catre implement) -> Pull Request sau notare ca esuat. Orchestratorul coordoneaza si face git/teste determinist; planul, implementarea, review-ul si verify-ul ruleaza ca subagenti separati.",
   "author": {
     "name": "Bogdan"
